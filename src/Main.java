@@ -8,9 +8,9 @@ public class Main {
         float annualInterest = (float) Conceal.readNumber("Annual Interest : ", 1, 30);
         byte years = (byte) Conceal.readNumber("Period (years) : ", 1, 30);
 
-        MortgageReport.printMortgage(principal , annualInterest , years);
+        MortgageReport.printMortgage();
 
-        MortgageReport.printPaymentsSchedule(principal, annualInterest, years);
+        new MortgageReport().printPaymentsSchedule(principal, annualInterest, years);
 
     }
 

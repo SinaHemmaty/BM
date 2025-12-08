@@ -1,8 +1,21 @@
 import java.text.NumberFormat;
+import java.time.Period;
 
 public class MortgageReport {
-    private static MortgageCalculator calculator;
-    public static void printMortgage(int principal, float annualInterest, byte years) {
+    private MortgageCalculator calculator;
+
+    public void printPaymentsSchedule() {
+        System.out.println();
+        System.out.println("Payments Schedule");
+        System.out.println(".........");
+        
+        for(short month = 1; month < calculate.getYears() * Main.MONTHS_IN_YEAR; month ++){
+            double balance = calculator.calculateBalance(month);
+            System.out.println(NumberFormat.getCurrencyInstance().format(balance));
+        }
+    }
+
+    public void printMortgage() {
         double mortgage = calculator.calculateMortgage();
         String mortgageFormatted = NumberFormat.getCurrencyInstance().format(mortgage);
         System.out.println();
@@ -11,13 +24,4 @@ public class MortgageReport {
         System.out.println("Monthly Payments" + mortgageFormatted);
     }
 
-    public static void printPaymentsSchedule(int principal, float annualInterest, byte years) {
-        System.out.println();
-        System.out.println("Payments Schedule");
-        System.out.println(".........");
-        for(short month = 1; month < years * Main.MONTHS_IN_YEAR; month ++){
-            double balance = calculator.calculateBalance(month);
-            System.out.println(NumberFormat.getCurrencyInstance().format(balance));
-        }
-    }
 }
