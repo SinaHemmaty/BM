@@ -29,4 +29,8 @@ public class MortgageCalculator {
                 / (Math.pow(1 + monthlyInterest, numberOfPayments) - 1);
         return balance;
     }
+
+    public short getYears() {
+        return years;
+    }
 }
