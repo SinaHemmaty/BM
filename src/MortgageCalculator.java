@@ -1,7 +1,7 @@
 import java.text.NumberFormat;
 public class MortgageCalculator {
-    public final static byte MONTH_IN_YEAR = 12 ;
-    public final static byte PERCENT = 100 ;
+    public final static byte MONTHS_IN_YEAR = 12;
+    public final static byte PERCENT = 100;
     private int principal;
     private float annualInterest;
     private byte years;
@@ -27,10 +27,10 @@ public class MortgageCalculator {
         return mortgage;
     }
     private int getNumberOfPayments() {
-        return years * Mc.MONTHS_IN_YEAR;
+        return years * MONTHS_IN_YEAR;
     }
     private float getMonthlyInterest() {
-        return annualInterest / Mc.PERCENT / Mc.MONTHS_IN_YEAR;
+        return annualInterest / PERCENT / MONTHS_IN_YEAR;
     }
     public double calculateBalance(short numberOfPaymentsMade){
 
