@@ -1,7 +1,16 @@
+import java.text.NumberFormat;
 public class MortgageCalculator {
+    public final static byte MONTH_IN_YEAR = 12 ;
+    public final static byte PERCENT = 100 ;
     private int principal;
     private float annualInterest;
     private byte years;
+    public double[] getRemainingBalances() {
+        double[] balances = new double[getNumberOfPayments()];
+        for (short month = 1; month < balances.length; month++)
+             balances[month - 1] = calculateBalance(month);
+        return balances;
+    }
     public MortgageCalculator(int principal , float annualInterest , byte years) {
         this.principal = principal ;
         this.annualInterest = annualInterest ;
@@ -10,18 +19,23 @@ public class MortgageCalculator {
     }
     public double calculateMortgage() {
 
-        float numberOfPayments = years * Main.MONTHS_IN_YEAR;
-
-        float monthlyInterest = annualInterest / Main.PERCENT / Main.MONTHS_IN_YEAR;
+        float numberOfPayments = getNumberOfPayments();
+        float monthlyInterest = getMonthlyInterest();
 
         double mortgage = principal * (monthlyInterest * Math.pow(1 + monthlyInterest, numberOfPayments)) /
                 (Math.pow(1 + monthlyInterest, numberOfPayments) - 1);
         return mortgage;
     }
+    private int getNumberOfPayments() {
+        return years * Mc.MONTHS_IN_YEAR;
+    }
+    private float getMonthlyInterest() {
+        return annualInterest / Mc.PERCENT / Mc.MONTHS_IN_YEAR;
+    }
     public double calculateBalance(short numberOfPaymentsMade){
 
-        float numberOfPayments = years * Main.MONTHS_IN_YEAR;
-        float monthlyInterest = annualInterest / Main.PERCENT / Main.MONTHS_IN_YEAR;
+        float numberOfPayments = getNumberOfPayments();
+        float monthlyInterest = getMonthlyInterest();
 
         short month;
         double balance = principal *
@@ -29,7 +43,6 @@ public class MortgageCalculator {
                 / (Math.pow(1 + monthlyInterest, numberOfPayments) - 1);
         return balance;
     }
-
     public short getYears() {
         return years;
     }

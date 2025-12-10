@@ -5,17 +5,13 @@ public class MortgageReport {
     public MortgageReport(MortgageCalculator calculator) {
         this.calculator = calculator;
     }
-
     public void printPaymentsSchedule() {
         System.out.println();
         System.out.println("Payments Schedule");
         System.out.println(".........");
-        for(short month = 1; month < calculator.getYears() * Main.MONTHS_IN_YEAR; month ++){
-            double balance = calculator.calculateBalance(month);
-            System.out.println(NumberFormat.getCurrencyInstance().format(balance));
-        }
+        for (double balances : calculator.getRemainingBalances())
+            System.out.println(NumberFormat.getCurrencyInstance().format(balances));
     }
-
     public void printMortgage() {
         double mortgage = calculator.calculateMortgage();
         String mortgageFormatted = NumberFormat.getCurrencyInstance().format(mortgage);

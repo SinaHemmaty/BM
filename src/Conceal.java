@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class Conceal{
     private static Scanner scanner = new Scanner(System.in);
     public static double readNumber(String prompt, double min, double max) {
