@@ -1,3 +1,7 @@
+package BMP;
+
+import BMP.MortgageCalculator;
+
 import java.text.NumberFormat;
 
 public class MortgageReport {

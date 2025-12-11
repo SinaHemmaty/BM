@@ -1,3 +1,5 @@
+package BMP;
+
 import java.util.Scanner;
 public class Conceal{
     private static Scanner scanner = new Scanner(System.in);

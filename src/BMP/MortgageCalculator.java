@@ -1,3 +1,5 @@
+package BMP;
+
 import java.text.NumberFormat;
 public class MortgageCalculator {
     public final static byte MONTHS_IN_YEAR = 12;
